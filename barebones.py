@@ -1,5 +1,6 @@
 #import stuff
 from datetime import datetime
+import time
 
 #print the time every second
 def check_time():
@@ -17,4 +18,6 @@ def play():
     print(f"Playing {filename}...")
 
 #run functions
-play()
+while True:
+    play()
+    time.sleep(1)
