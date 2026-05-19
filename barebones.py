@@ -18,9 +18,9 @@ def play():
 
 #run functions
 while True:
-    hournow = get_hour()
+    hournow = datetime.now().hour
     time.sleep(1)
-    if hournow != get_hour():
+    if hournow != datetime.now().hour:
         print(f"New hour, playing new track... (time: {datetime.now().hour:02})")
         play()
     else:
