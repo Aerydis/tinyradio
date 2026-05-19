@@ -1,14 +1,20 @@
 #import stuff
 from datetime import datetime
-import asyncio
 
 #print the time every second
-async def main():
-    while True:
-        timenow = datetime.now()
-        print("The current time is:", timenow)
-        await asyncio.sleep(1)
-        print("The current hour is:", timenow.hour)
+def check_time():
+    timenow = datetime.now()
+    print("The current hour is:", timenow.hour)
+    return timenow.hour
 
-#run
-asyncio.run(main())
+def create_filename():
+    hournow = check_time()
+    filename = f"tracks/{hournow:02}.mp3"
+    return filename
+
+def play():
+    filename = create_filename()
+    print(f"Playing {filename}...")
+
+#run functions
+play()
