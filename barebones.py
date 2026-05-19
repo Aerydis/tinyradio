@@ -3,13 +3,12 @@ from datetime import datetime
 import time
 
 #print the time every second
-def check_time():
+def get_hour():
     timenow = datetime.now()
-    print("The current hour is:", timenow.hour)
     return timenow.hour
 
 def create_filename():
-    hournow = check_time()
+    hournow = get_hour()
     filename = f"tracks/{hournow:02}.mp3"
     return filename
 
@@ -19,5 +18,10 @@ def play():
 
 #run functions
 while True:
-    play()
+    hournow = get_hour()
     time.sleep(1)
+    if hournow != get_hour():
+        print(f"New hour, playing new track... (time: {datetime.now().hour:02})")
+        play()
+    else:
+        print(f"Same hour, waiting... (time: {datetime.now().hour:02})")
