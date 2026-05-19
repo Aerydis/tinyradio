@@ -1,27 +1,27 @@
 #import stuff
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 
-#print the time every second
-def get_hour():
-    timenow = datetime.now()
-    return timenow.hour
+def calculate_sleep_duration(current_full_time):
+    #get current time and calculate next hour mark
+    next_hour_mark = (
+        (current_full_time.replace(minute=0, second=0, microsecond=0)) + timedelta(hours = 1)
+    )
 
-def create_filename():
-    hournow = get_hour()
-    filename = f"tracks/{hournow:02}.mp3"
-    return filename
+    #calculate how long to sleep for until the next hour mark
+    sleep_duration = (next_hour_mark - current_full_time).total_seconds()
 
-def play():
-    filename = create_filename()
-    print(f"Playing {filename}...")
+    #return
+    return sleep_duration
+
+def play_hourly_track(current_full_time):
+    old_track_name = f"tracks/{(current_full_time.hour - 1) % 24:02}.mp3"
+    print(f"Stopping {old_track_name}...")
+    new_track_name = f"tracks/{current_full_time.hour:02}.mp3"
+    print(f"Playing {new_track_name}...")
 
 #run functions
 while True:
-    hournow = datetime.now().hour
-    time.sleep(1)
-    if hournow != datetime.now().hour:
-        print(f"New hour, playing new track... (time: {datetime.now().hour:02})")
-        play()
-    else:
-        print(f"Same hour, waiting... (time: {datetime.now().hour:02})")
+    current_full_time = datetime.now()
+    play_hourly_track(current_full_time)
+    time.sleep(calculate_sleep_duration(current_full_time))
