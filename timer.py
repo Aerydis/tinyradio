@@ -19,7 +19,7 @@ def calculate_sleep_duration(current_full_time):
     return sleep_duration
 
 def stop_current_track(current_full_time):
-    old_track_name = f"tracks/{(current_full_time.hour - 1) % 24:02}.ogg"
+    old_track_name = f"tracks/{(current_full_time.hour) % 24:02}.ogg"
     print(f"stopping {old_track_name}...") 
     pygame.mixer.music.fadeout(5000) #fade out over 5 seconds
     time.sleep(5) #wait for fadeout to finish
