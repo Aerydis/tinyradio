@@ -8,7 +8,7 @@ pygame.init()
 def calculate_sleep_duration(current_full_time):
     #get current time and calculate next hour mark - 5 seconds
     wake_up_time = (
-        (current_full_time.replace(minute=0, second=0, microsecond=0)) + timedelta(hours = 1)
+        (current_full_time.replace(minute=0, second=0, microsecond=500)) + timedelta(hours = 1)
     ) - timedelta(seconds=5)
 
     #calculate how long to sleep for until the next hour mark
