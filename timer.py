@@ -15,6 +15,7 @@ def calculate_sleep_duration(current_full_time):
     sleep_duration = (wake_up_time - current_full_time).total_seconds()
 
     #return
+    print(f"sleeping for {sleep_duration} seconds until {wake_up_time.time()}...")
     return sleep_duration
 
 def stop_current_track(current_full_time):
