@@ -15,9 +15,9 @@ def calculate_sleep_duration(current_full_time):
     return sleep_duration
 
 def play_hourly_track(current_full_time):
-    old_track_name = f"tracks/{(current_full_time.hour - 1) % 24:02}.mp3"
+    old_track_name = f"tracks/{(current_full_time.hour - 1) % 24:02}.ogg"
     print(f"Stopping {old_track_name}...")
-    new_track_name = f"tracks/{current_full_time.hour:02}.mp3"
+    new_track_name = f"tracks/{current_full_time.hour:02}.ogg"
     print(f"Playing {new_track_name}...")
 
 #run functions
